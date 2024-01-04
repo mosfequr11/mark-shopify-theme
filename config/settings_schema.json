@@ -1,11 +1,11 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "Mark",
-    "theme_version": "1.0",
-    "theme_author": "Mosfequr",
-    "theme_documentation_url": "",
-    "theme_support_url": ""
+    "theme_name": "mark",
+    "theme_version": "12.0.0",
+    "theme_author": "Ittheme",
+    "theme_documentation_url": "https://help.shopify.com/manual/online-store/themes",
+    "theme_support_url": "https://support.shopify.com/"
   },
   {
     "name": "t:settings_schema.logo.name",
@@ -1457,6 +1457,12 @@
         "id": "cart_drawer_collection",
         "label": "t:settings_schema.cart.settings.cart_drawer.collection.label",
         "info": "t:settings_schema.cart.settings.cart_drawer.collection.info"
+      },
+      {
+        "type": "color_scheme",
+        "id": "cart_color_scheme",
+        "label": "t:sections.all.colors.label",
+        "default": "background-1"
       }
     ]
   }
