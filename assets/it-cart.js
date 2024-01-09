@@ -16,5 +16,14 @@ addToCartForms.forEach((form) => {
       method: "post",
       body: new FormData(form),
     });
+
+    // Get new cart object
+    const res = await fetch("/cart.json");
+    const cart = await res.json();
+
+    // Update cart count
+    document.querySelectorAll(".cart-count").forEach((el) => {
+      el.textContent = cart.item_count;
+    });
   });
 });
