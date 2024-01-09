@@ -1,3 +1,4 @@
+<script src="{{ 'it-cart.js' | asset_url }}" defer="defer"></script>
 {% assign selectedVariant = product.first_or_selected_variant %}
 
 <div class="product-page">
@@ -11,7 +12,7 @@
         <h2>{{ product.title }}</h2>
         <p class="produce-price">{{ selectedVariant.price | money }}</p>
 
-        <div class="product-description ">
+        <div class="product-description">
           {{ product.description }}
         </div>
 
