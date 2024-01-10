@@ -25,5 +25,11 @@ addToCartForms.forEach((form) => {
     document.querySelectorAll(".cart-count").forEach((el) => {
       el.textContent = cart.item_count;
     });
+
+    // Display message
+    const message = document.createElement("p");
+    message.classList.add("added-to-cart");
+    message.textContent = "Added to cart!";
+    form.appendChild(message);
   });
 });
