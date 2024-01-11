@@ -9,6 +9,14 @@
       </div>
 
       <div class="product-content">
+        <div class="cart-count-it">
+          {%- if cart.item_count < 100 -%}
+            <span>{{ cart.item_count }}</span>
+          {%- else -%}
+            <span>0</span>
+          {%- endif -%}
+        </div>
+
         <h2>{{ product.title }}</h2>
         <p class="produce-price">{{ selectedVariant.price | money }}</p>
 

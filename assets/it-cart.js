@@ -19,17 +19,21 @@ addToCartForms.forEach((form) => {
 
     // Get new cart object
     const res = await fetch("/cart.json");
-    const cart = await res.json();
+    const cartIt = await res.json();
+    // check JSON file data
+    // console.log(cartIt);
 
-    // Update cart count
-    document.querySelectorAll(".cart-count").forEach((el) => {
-      el.textContent = cart.item_count;
+    // Update cart count (number of items in the cart )
+    document.querySelectorAll(".cart-count-it").forEach((el) => {
+      el.textContent = cartIt.item_count;
+      // check number of items in the cart
+      console.log(el.textContent);
     });
 
     // Display message
-    const message = document.createElement("p");
-    message.classList.add("added-to-cart");
-    message.textContent = "Added to cart!";
-    form.appendChild(message);
+    // const message = document.createElement("p");
+    // message.classList.add("added-to-cart");
+    // message.textContent = "Added to cart!";
+    // form.appendChild(message);
   });
 });
