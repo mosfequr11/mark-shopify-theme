@@ -1,4 +1,6 @@
 <script src="{{ 'it-cart.js' | asset_url }}" defer="defer"></script>
+{{ 'it-cart.css' | asset_url | stylesheet_tag }}
+
 {% assign selectedVariant = product.first_or_selected_variant %}
 
 <div class="product-page">
@@ -45,6 +47,7 @@
           </div>
 
           <button class="button product-add" type="submit">Add to cart</button>
+          <p class="it-cart-added-success">add to cart successful</p>
         {% endform %}
       </div>
     </div>

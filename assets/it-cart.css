@@ -1,0 +1,8 @@
+.it-cart-added-success {
+  display: none;
+  font-size: 16px;
+}
+
+.it-cart-added-success.active {
+  display: block;
+}
