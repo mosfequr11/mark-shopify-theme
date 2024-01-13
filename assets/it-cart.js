@@ -33,12 +33,12 @@ addToCartForms.forEach((form) => {
     });
 
     // manually display message
-    form.querySelector(".it-cart-added-success").classList.add("active");
+    // form.querySelector(".it-cart-added-success").classList.add("active");
 
-    // Display message
-    const message = document.createElement("p");
-    message.classList.add("added-to-cart");
-    message.textContent = "Added to cart!";
-    form.appendChild(message);
+    // Display message using js
+    const messageIt = document.createElement("p");
+    messageIt.classList.add("it-quick-added-success");
+    messageIt.textContent = "Added to cart! using js";
+    form.appendChild(messageIt);
   });
 });
