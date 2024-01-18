@@ -1,4 +1,4 @@
-.cart-drawer {
+.it-cart-drawer {
   position: fixed;
   top: 0;
   left: -9999px;
@@ -11,12 +11,6 @@
   flex-direction: column;
   padding: 24px;
   transition: left 0s 0.2s, opacity 0.2s;
-}
-
-.cart-drawer--active {
-  left: 0;
-  opacity: 1;
-  transition: left 0s, opacity 0.2s;
 }
 
 .cart-drawer-box {
@@ -33,10 +27,19 @@
   transform: translateX(40px);
 }
 
-.cart-drawer--active .cart-drawer-box {
+/* cart drawer active */
+.drawer_active {
+  left: 0;
+  opacity: 1;
+  transition: left 0s, opacity 0.2s;
+}
+
+.drawer_active .cart-drawer-box {
   transform: none;
   opacity: 1;
 }
+
+
 
 .cart-drawer-header {
   display: flex;
@@ -65,7 +68,7 @@
 }
 
 .cart-drawer-header-right-close {
-  width: 20px;
+  width: 55px;
   color: #a1a1a1;
   cursor: pointer;
 }
