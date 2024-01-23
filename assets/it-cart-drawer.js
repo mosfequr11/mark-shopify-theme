@@ -66,3 +66,35 @@ function addCartDrawerListeners() {
       });
     });
 }
+
+addCartDrawerListeners();
+
+document.querySelectorAll('form[action="/cart/add"]').forEach((form) => {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Submit form with ajax
+    await fetch("/cart/add", {
+      method: "post",
+      body: new FormData(form),
+    });
+
+    // Get cart count
+    const res = await fetch("/cart.js");
+    const cart = await res.json();
+    updateCartItemCounts(cart.item_count);
+
+    // Update cart
+    await updateCartDrawer();
+
+    // Open cart drawer
+    openCartDrawer();
+  });
+});
+
+document.querySelectorAll('a[href="/cart"]').forEach((a) => {
+  a.addEventListener("click", (e) => {
+    e.preventDefault();
+    openCartDrawer();
+  });
+});
