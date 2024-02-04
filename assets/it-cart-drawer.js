@@ -13,6 +13,29 @@ function updateCartItemCounts(count) {
     el.textContent = count;
   });
 }
+//when cart added then open cart drawer
+document.querySelectorAll('form[action="/cart/add"]').forEach((form) => {
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    // Submit form with ajax
+    await fetch("/cart/add", {
+      method: "post",
+      body: new FormData(form),
+    });
+
+    // Get cart count
+    const res = await fetch("/cart.js");
+    const cart = await res.json();
+    updateCartItemCounts(cart.item_count);
+
+    // Update cart
+    await updateCartDrawer();
+
+    // Open cart drawer
+    openCartDrawer();
+  });
+});
 
 async function updateCartDrawer() {
   const res = await fetch("/?section_id=cart-drawer");
@@ -65,32 +88,24 @@ function addCartDrawerListeners() {
         updateCartDrawer();
       });
     });
+
+  document.querySelector(".cart-drawer-box").addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+
+  document
+    .querySelectorAll(".cart-drawer-header-right-close, .cart-drawer")
+    .forEach((el) => {
+      el.addEventListener("click", () => {
+        //  console.log(el);
+        // console.log("closing drawer");
+        // this a callback function to close drawer
+        closeCartDrawer();
+      });
+    });
 }
 
 addCartDrawerListeners();
-
-document.querySelectorAll('form[action="/cart/add"]').forEach((form) => {
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    // Submit form with ajax
-    await fetch("/cart/add", {
-      method: "post",
-      body: new FormData(form),
-    });
-
-    // Get cart count
-    const res = await fetch("/cart.js");
-    const cart = await res.json();
-    updateCartItemCounts(cart.item_count);
-
-    // Update cart
-    await updateCartDrawer();
-
-    // Open cart drawer
-    openCartDrawer();
-  });
-});
 
 document.querySelectorAll('a[href="/cart"]').forEach((a) => {
   a.addEventListener("click", (e) => {

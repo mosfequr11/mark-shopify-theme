@@ -5,11 +5,9 @@
     {% comment %} Header section {% endcomment %}
     <header class="cart-drawer-header">
       <h2>Your cart</h2>
-
       <div class="cart-drawer-header-right">
-        <span class="cart-drawer-header-right-items">{{ cart.item_count }} items</span>
-
-        <button class="cart-drawer-header-right-close" type="button">close</button>
+        <span class="cart-drawer-header-right-items cart-count">{{ cart.item_count }}</span> <span> items</span>
+        <button class="cart-drawer-header-right-close " type="button">close</button>
       </div>
     </header>
 
@@ -33,7 +31,7 @@
                     <div class="cart-drawer-quantity-selector">
                       <button class="cart-drawer-quantity-selector-minus" type="button">-</button>
                       <input type="text" readonly value="{{ item.quantity }}">
-                      <button class="cart-drawer-quantity-selector-plus" type="button"></button>
+                      <button class="cart-drawer-quantity-selector-plus" type="button">+</button>
                     </div>
                   </div>
                   <div class="cart-drawer-item-main-flex-right">
