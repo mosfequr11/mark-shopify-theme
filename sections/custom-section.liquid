@@ -1,0 +1,82 @@
+{% style %}
+  .section-content-wrapper--{{ section.id }} {
+    /* padding-block-start: {{ section.settings.padding_top}}px;
+    padding-block-end: {{ section.settings.padding_bottom}}px; */
+
+    flex-direction: {{ section.settings.direction }};
+    {% if section.settings.direction == 'row' %}
+      justify-content: {{ section.settings.justify_content }};
+    {% else  %}
+      align-items: {{ section.settings.justify_content }};
+    {% endif %}
+  }
+{% endstyle %}
+
+<div class="custom-section color-{{ section.settings.color_scheme }}">
+  <div class="section-content-wrapper section-content-wrapper--{{ section.id }} layout layout--{{ section.settings.direction }}">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Custom section",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Content direction",
+      "options": [
+        {
+          "value": "row",
+          "label": "Horizontal"
+        },
+        {
+          "value": "column",
+          "label": "Vertical"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "justify_content",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        }
+      ],
+      "default": "flex-start"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom section"
+    },
+    {
+      "name": "Heading and text"
+    }
+  ]
+}
+{% endschema %}

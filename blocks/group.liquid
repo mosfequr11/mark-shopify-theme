@@ -1,0 +1,96 @@
+{% style %}
+  .group-block--{{ block.id }} {
+    padding: {{ block.settings.padding }}px;
+    flex-direction: {{ block.settings.direction }};
+    {% if block.settings.direction == 'row' %}
+      justify-content: {{ block.settings.justify_content }};
+    {% else %}
+      align-items: {{ block.settings.justify_content }};
+    {% endif %}
+  }
+
+  @media screen and (min-width: 750px) {
+    .group-block--{{ block.id }} {
+      width: {{ block.settings.width }}%;
+  }
+{% endstyle %}
+
+<div
+  class="group-block group-block--{{ block.id }} color-{{ block.settings.color_scheme }} layout--{{ block.settings.direction }}"
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Group",
+  "blocks": [{ "type": "@theme" }, { "type": "@app" }],
+  "settings": [
+    {
+      "type": "header",
+      "content": "Color"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Content direction",
+      "options": [
+        {
+          "value": "row",
+          "label": "Horizontal"
+        },
+        {
+          "value": "column",
+          "label": "Vertical"
+        }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "justify_content",
+      "label": "Content position",
+      "options": [
+        {
+          "value": "flex-start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "flex-end",
+          "label": "End"
+        }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "range",
+      "id": "width",
+      "label": "Width",
+      "min": 20,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "paragraph",
+      "content": "Width is automatically optimized for mobile."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Group"
+    }
+  ]
+}
+{% endschema %}
