@@ -1,0 +1,108 @@
+{%- style -%}
+{%- endstyle -%}
+{{ 'product-swatch.css' | asset_url | stylesheet_tag }}
+
+<div class="color-swatch-section">
+  <div class="section-container">
+    <div class="left-area">
+      <div class="top-area">
+        <h2 class="heading">{{ section.settings.heading }}</h2>
+        <img src="{{ section.settings.arrow_image | img_url: '800x' }}" alt="{{ product.title }}">
+      </div>
+      <div class="product-block">
+        {%- liquid
+          assign selected_product = section.settings.product
+        -%}
+        <div class="image-box">
+          {% for variant in product.variants %}
+            <img
+              class="featured-image"
+              src="{{ selected_product.featured_image | img_url: '600x' }}"
+              alt="{{ selected_product.title }}"
+            >
+          {% endfor %}
+        </div>
+        <div class="product-info">
+          {% comment %} {% render 'product-variant-picker', selected_product: product %} {% endcomment %}
+
+          {% assign color_option_index = 0 %}
+          {% for variant in selected_product.variants %}
+            {% assign color = variant.options[color_option_index] %}
+            <p>{{ color }}</p>
+          {% endfor %}
+
+          <h3>{{ selected_product.title }}</h3>
+          <p>
+            {% if selected_product.compare_at_price > selected_product.price %}
+              <del>{{ selected_product.compare_at_price | money }}</del>
+            {% endif %}
+            <strong>{{ selected_product.price | money }}</strong>
+          </p>
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="id" value="{{ selected_product.variants.first.id }}">
+            <button type="submit">Add to Cart</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="right-area">
+      <div class="product-image">
+        <img src="{{ section.settings.product_image | img_url: '800x' }}" alt="{{ product.title }}">
+      </div>
+      <a class="banner-btn" href="{{ section.settings.button_url }}">
+        <span class="btn-text">{{ section.settings.button_text }}</span>
+        <span class="button-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+            <!--!Font Awesome Free v7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2025 Fonticons, Inc.--><path d="M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/>
+          </svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Product swatch",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your Best Smile Yet"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Select Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "arrow_image",
+      "label": "Arrow Image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Read More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link",
+      "info": "Link for the button"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product swatch",
+      "category": "Product Display"
+    }
+  ]
+}
+{% endschema %}
