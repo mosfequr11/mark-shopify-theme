@@ -14,9 +14,11 @@
     <div class="product-right">
       <h3 class="collection-name">{{ section.settings.collection_name }}</h3>
       <div class="product-products swiper mySwiper show-mobile">
-        <div class="swiper-button-next"></div>
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-pagination"></div>
+        <div class="pag-nav">
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
         <div class="swiper-wrapper ">
           {% if section.settings.collection != blank %}
             {% assign collection_handle = section.settings.collection %}
