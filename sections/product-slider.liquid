@@ -1,0 +1,87 @@
+{{ 'product-slider.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-slider.js' | asset_url }}" defer="defer"></script>
+
+<section class="product-section">
+  <div class="product-container">
+    <div class="product-left">
+      {% if section.settings.icon %}
+        <img src="{{ section.settings.icon | img_url: '100x' }}" alt="Icon" class="product-icon">
+      {% endif %}
+      <h2>{{ section.settings.title }}</h2>
+      <p>{{ section.settings.description }}</p>
+    </div>
+
+    <div class="product-right">
+      <h2>{{ section.settings.collection_name }}</h2>
+      <div class="product-products swiper mySwiper show-mobile">
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-wrapper ">
+          {% if section.settings.collection != blank %}
+            {% assign collection_handle = section.settings.collection %}
+            {% assign products = collections[collection_handle].products %}
+            {% for product in products limit: 6 %}
+              <div class="product-product-card swiper-slide">
+                <a href="{{ product.url }}">
+                  <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+                </a>
+                <h4>{{ product.title }}</h4>
+                <div class="product-description">
+                  {{ product.description | strip_html | truncate: 100 }}
+                </div>
+                {% if product.options.size > 0 %}
+                  <p>{{ product.variants.size }} COLORS</p>
+                {% endif %}
+                <span class="price">{{ product.price | money }}</span>
+              </div>
+            {% endfor %}
+          {% else %}
+            <p>No products available</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product slider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Looks good, breaks down better"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "product-acetate is made from plants, not plastic. No fossil fuels. No shortcuts. Just renewable cotton and wood pulp creating eco frames that feel good, last long, and leave less behind. Durable. Adaptable. productdegradable."
+    },
+    {
+      "type": "image_picker",
+      "id": "icon",
+      "label": "Icon"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "collection_name",
+      "label": "Collection name",
+      "default": "Collection name"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product slider"
+    }
+  ]
+}
+{% endschema %}
