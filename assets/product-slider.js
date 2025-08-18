@@ -3,6 +3,10 @@ var swiper = new Swiper(".mySwiper", {
     el: ".swiper-pagination",
     type: "fraction",
   },
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
   breakpoints: {
     480: {
       // For devices >= 480px
@@ -24,9 +28,5 @@ var swiper = new Swiper(".mySwiper", {
       slidesPerView: 2,
       spaceBetween: 25,
     },
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
   },
 });

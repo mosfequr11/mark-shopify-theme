@@ -7,12 +7,12 @@
       {% if section.settings.icon %}
         <img src="{{ section.settings.icon | img_url: '100x' }}" alt="Icon" class="product-icon">
       {% endif %}
-      <h2>{{ section.settings.title }}</h2>
-      <p>{{ section.settings.description }}</p>
+      <h2 class="heading">{{ section.settings.title }}</h2>
+      <p class="text">{{ section.settings.description }}</p>
     </div>
 
     <div class="product-right">
-      <h2>{{ section.settings.collection_name }}</h2>
+      <h3 class="collection-name">{{ section.settings.collection_name }}</h3>
       <div class="product-products swiper mySwiper show-mobile">
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
@@ -30,10 +30,12 @@
                 <div class="product-description">
                   {{ product.description | strip_html | truncate: 100 }}
                 </div>
-                {% if product.options.size > 0 %}
-                  <p>{{ product.variants.size }} COLORS</p>
-                {% endif %}
-                <span class="price">{{ product.price | money }}</span>
+                <div class="bottom-content">
+                  {% if product.options.size > 0 %}
+                    <p>{{ product.variants.size }} COLORS</p>
+                  {% endif %}
+                  <span class="price">{{ product.price | money }}</span>
+                </div>
               </div>
             {% endfor %}
           {% else %}

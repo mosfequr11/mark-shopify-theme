@@ -49,16 +49,18 @@
     top: 0px;
 }
 
-/* .product-left h2 {
+.product-left .heading {
     font-size: 28px;
     color: #4b5d3c;
     margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .product-left p {
     font-size: 16px;
     color: #444;
     line-height: 1.5;
+    font-weight: 400;
 }
 
 .product-icon {
@@ -74,11 +76,36 @@
 .product-product-card h4 {
     font-size: 16px;
     margin: 10px 0 5px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
 .product-product-card .price {
-    font-weight: bold;
+    font-weight: 700;
     color: #222;
+    font-size: 12px;
+}
+
+.collection-name {
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.bottom-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-description {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.bottom-content p {
+    font-size: 12px;
+    font-weight: 400;
 }
 
 /* Mobile */
