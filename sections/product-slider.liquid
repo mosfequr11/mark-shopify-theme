@@ -1,3 +1,6 @@
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 {{ 'product-slider.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-slider.js' | asset_url }}" defer="defer"></script>
 
@@ -12,8 +15,8 @@
     </div>
 
     <div class="product-right">
-      <h3 class="collection-name">{{ section.settings.collection_name }}</h3>
       <div class="product-products swiper mySwiper show-mobile">
+        <h3 class="collection-name">{{ section.settings.collection_name }}</h3>
         <div class="pag-nav">
           <div class="swiper-button-next"></div>
           <div class="swiper-button-prev"></div>
@@ -34,7 +37,7 @@
                 </div>
                 <div class="bottom-content">
                   {% if product.options.size > 0 %}
-                    <p>{{ product.variants.size }} COLORS</p>
+                    <p>+{{ product.variants.size }} COLORS</p>
                   {% endif %}
                   <span class="price">{{ product.price | money }}</span>
                 </div>
