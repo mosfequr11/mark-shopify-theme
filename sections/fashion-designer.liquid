@@ -1,24 +1,22 @@
-<div class="designer-container">
-  <div class="img">
-    <img src="{{fashion_designer.fashion_designer.profile_image |img_url:'500x' }}" alt="Designer">
-  </div>
-  <div class="designer-body">
-    <h2 class="designer_name">{{ fashion_designer.fashion_designer.name }}</h2>
-    <p class="designer_bio">{{ fashion_designer.fashion_designer.bio }}</p>
-    <a href="{{ fashion_designer.fashion_designer.website_url }}" class="button button--primary"
-      >See all their products</a
-    >
-    <p class="designer_country">{{ fashion_designer.fashion_designer.country }}</p>
-  </div>
-</div>
+<section class="designer">
+  {% assign fashion_designers = shop.metaobjects.fashion_designer.values %}
+  {% for designer in fashion_designers %}
+    <div class="designer">
+      <img src="{{ designer.profile_image | img_url: '500x' }}" alt="{{ designer.name }}">
+      <h2>{{ designer.name }}</h2>
+      <p>{{ designer.bio }}</p>
+      <a href="{{ designer.website }}" target="_blank">Visit Website</a>
+      <p>{{ designer.country }}</p>
+    </div>
+  {% endfor %}
+</section>
 {% schema %}
 {
   "name": "Fashion designer",
   "settings": [],
   "presets": [
     {
-      "name": "Fashion designer",
-      "category": "Text"
+      "name": "Fashion designer"
     }
   ]
 }
