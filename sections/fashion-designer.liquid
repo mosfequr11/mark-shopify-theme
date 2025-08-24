@@ -1,3 +1,9 @@
+{% comment %}
+  Metaobjects must be published to the Online Store if you want to access them via Storefront API or Liquid.
+  If you have metaobjects published in your store, you can access them via shop.metaobjects in Liquid
+  If you want to link metaobjects to products, you need to create a metaobject reference field in product metafields.
+{% endcomment %}
+
 <section class="designer">
   {% assign fashion_designers = shop.metaobjects.fashion_designer.values %}
   {% for designer in fashion_designers %}
