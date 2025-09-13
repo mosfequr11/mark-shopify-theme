@@ -1,0 +1,76 @@
+<style>
+  .hotspot-section {
+    position: relative;
+    width: 100%;
+  }
+  .hotspot-image {
+    position: relative;
+  }
+  .hotspot-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .hotspot {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-decoration: none;
+  }
+  .hotspot-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff5252;
+    display: block;
+    border: 2px solid #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  }
+  .hotspot:hover .hotspot-dot {
+    background: #ff0000;
+  }
+</style>
+
+<div class="hotspot-section">
+  {% if section.settings.bg_image %}
+    <div class="hotspot-image">
+      <img src="{{ section.settings.bg_image | img_url: 'master' }}" alt="Hotspot background">
+      {% for block in section.blocks %}
+        {% if block.type == 'hotspot' %}
+          <a
+            href="{{ block.settings.link }}"
+            class="hotspot"
+            style="top:{{ block.settings.y }}%; left:{{ block.settings.x }}%;"
+            title="{{ block.settings.title }}"
+          >
+            <span class="hotspot-dot"></span>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
+</div>
+{% schema %}
+{
+  "name": "Image Hotspot",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "hotspot",
+      "name": "Hotspot",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Tooltip text" },
+        { "type": "url", "id": "link", "label": "Link (optional)" },
+        { "type": "range", "id": "x", "label": "Horizontal position (%)", "min": 0, "max": 100, "step": 1 },
+        { "type": "range", "id": "y", "label": "Vertical position (%)", "min": 0, "max": 100, "step": 1 }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Image Hotspot", "category": "Image" }]
+}
+{% endschema %}
