@@ -1,34 +1,6 @@
-<style>
-  .hotspot-section {
-    position: relative;
-    width: 100%;
-  }
-  .hotspot-image {
-    position: relative;
-  }
-  .hotspot-image img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  .hotspot {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    text-decoration: none;
-  }
-  .hotspot-dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ff5252;
-    display: block;
-    border: 2px solid #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-  }
-  .hotspot:hover .hotspot-dot {
-    background: #ff0000;
-  }
-</style>
+{%- style -%}
+{%- endstyle -%}
+{{ 'mr-image-hotspot.css' | asset_url | stylesheet_tag }}
 
 <div class="hotspot-section">
   {% if section.settings.bg_image %}
