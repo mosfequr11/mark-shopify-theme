@@ -1,0 +1,50 @@
+{{ 'mr-tab.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'mr-main.js' | asset_url }}" defer="defer"></script>
+<section class="menu-section">
+  <div class="sec-title">
+    <h2>our menu</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="btn-container">
+    <button type="button" class="filter-btn" data-id="all">all</button>
+    <button type="button" class="filter-btn" data-id="beef">beef</button>
+    <button type="button" class="filter-btn" data-id="chicken">chicken</button>
+    <button type="button" class="filter-btn" data-id="mutton">mutton</button>
+  </div>
+  <div class="section-center">
+    <article class="menu-item">
+      <figure class="product-img">
+        <img src="./assets/img/product/product-01.jpg" alt="menu item" class="photo">
+      </figure>
+      <div class="item-info">
+        <header>
+          <h4>Beef Stew Boneless 1</h4>
+          <h4 class="price">$15</h4>
+        </header>
+        <p class="item-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sint quam. Et reprehenderit fugiat
+          nesciunt inventore laboriosam excepturi! Quo, officia.
+        </p>
+      </div>
+    </article>
+  </div>
+</section>
+{% schema %}
+{
+  "name": "Tab",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_heading",
+      "label": "Heading",
+      "default": "Heading"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tab",
+      "blocks": []
+    }
+  ]
+}
+{% endschema %}
