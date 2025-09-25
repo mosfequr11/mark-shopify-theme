@@ -1,0 +1,45 @@
+<section class="newsletter-popup" data-section-id="{{ section.id }}" style="display:none;">
+  <div class="np-overlay"></div>
+  <div class="np-modal" role="dialog" aria-modal="true" aria-labelledby="np-title-{{ section.id }}">
+    <button type="button" class="np-close" aria-label="{{ 'general.close' | t }}">&times;</button>
+    <div class="np-content">
+      {% if section.settings.image != blank %}
+        <div class="np-image">
+          <img src="{{ section.settings.image | img_url: '600x' }}" alt="Newsletter image">
+        </div>
+      {% endif %}
+      <div class="np-text">
+        <h2 id="np-title-{{ section.id }}">{{ section.settings.title }}</h2>
+        <p>{{ section.settings.subtitle }}</p>
+        <form method="post" action="{{ routes.root_url }}contact#contact_form" id="np-form-{{ section.id }}">
+          <input type="hidden" name="form_type" value="customer">
+          <input type="hidden" name="utf8" value="✓">
+          <input
+            type="email"
+            name="contact[email]"
+            class="np-input"
+            placeholder="{{ section.settings.placeholder }}"
+            required
+          >
+          <button type="submit" class="np-button">{{ section.settings.button_text }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% schema %}
+{
+  "name": "Newsletter Popup",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Popup image" },
+    { "type": "text", "id": "title", "label": "Title", "default": "Join Our Newsletter" },
+    { "type": "text", "id": "subtitle", "label": "Subtitle", "default": "Get the latest updates and offers." },
+    { "type": "text", "id": "placeholder", "label": "Email placeholder", "default": "Enter your email" },
+    { "type": "text", "id": "button_text", "label": "Button text", "default": "Subscribe" },
+    { "type": "checkbox", "id": "auto_open", "label": "Auto open on page load", "default": true },
+    { "type": "range", "id": "delay", "label": "Delay (seconds)", "min": 0, "max": 30, "step": 1, "default": 5 }
+  ],
+  "presets": [{ "name": "Newsletter popup", "category": "Popup" }]
+}
+  {% endschema %}
+</section>
