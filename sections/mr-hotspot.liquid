@@ -11,8 +11,8 @@
           <a
             href="{{ block.settings.link }}"
             class="hotspot"
-            style="top:{{ block.settings.y }}%; left:{{ block.settings.x }}%;"
-            title="{{ block.settings.title }}"
+            style="top:{{ block.settings.vertical }}%; left:{{ block.settings.horizontal }}%;"
+            title="{{ block.settings.mr_title }}"
           >
             <span class="hotspot-dot"></span>
           </a>
@@ -36,13 +36,41 @@
       "type": "hotspot",
       "name": "Hotspot",
       "settings": [
-        { "type": "text", "id": "title", "label": "Tooltip text" },
-        { "type": "url", "id": "link", "label": "Link (optional)" },
-        { "type": "range", "id": "x", "label": "Horizontal position (%)", "min": 0, "max": 100, "step": 1 },
-        { "type": "range", "id": "y", "label": "Vertical position (%)", "min": 0, "max": 100, "step": 1 }
+        {
+          "type": "text",
+          "id": "mr_title",
+          "label": "Tooltip text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link (optional)"
+        },
+        {
+          "type": "range",
+          "id": "horizontal",
+          "label": "Horizontal position (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 50
+        },
+        {
+          "type": "range",
+          "id": "vertical",
+          "label": "Vertical position (%)",
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "default": 30
+        }
       ]
     }
   ],
-  "presets": [{ "name": "Image Hotspot", "category": "Image" }]
+  "presets": [
+    {
+      "name": "Image Hotspot"
+    }
+  ]
 }
 {% endschema %}
