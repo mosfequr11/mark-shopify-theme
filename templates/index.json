@@ -19,6 +19,37 @@
         "collection_name": "Collection name"
       }
     },
+    "mr_hotspot_tLKxVH": {
+      "type": "mr-hotspot",
+      "blocks": {
+        "hotspot_hxyzRL": {
+          "type": "hotspot",
+          "settings": {
+            "mr_title": "Dress Fabric",
+            "link": "",
+            "horizontal": 49,
+            "vertical": 77
+          }
+        },
+        "hotspot_DGdH4F": {
+          "type": "hotspot",
+          "settings": {
+            "mr_title": "Dress",
+            "link": "",
+            "horizontal": 70,
+            "vertical": 45
+          }
+        }
+      },
+      "block_order": [
+        "hotspot_hxyzRL",
+        "hotspot_DGdH4F"
+      ],
+      "name": "Image Hotspot",
+      "settings": {
+        "bg_image": "shopify://shop_images/fashion-designer-1.jpg"
+      }
+    },
     "product_swatch_6Tkm4T": {
       "type": "product-swatch",
       "name": "Product swatch",
@@ -28,10 +59,19 @@
         "button_text": "Read More",
         "button_url": ""
       }
+    },
+    "mr_tab_pRyqjf": {
+      "type": "mr-tab",
+      "name": "Tab",
+      "settings": {
+        "section_heading": "Heading"
+      }
     }
   },
   "order": [
     "mr_product_slider_Lcr4pq",
-    "product_swatch_6Tkm4T"
+    "mr_hotspot_tLKxVH",
+    "product_swatch_6Tkm4T",
+    "mr_tab_pRyqjf"
   ]
 }
